@@ -7,12 +7,31 @@ import AboutMe from './components/AboutMe'
 import RecentWorks from './components/RecentWorks'
 import Skills from './components/Skills'
 import ContactMe from './components/ContactMe'
+import { motion, useScroll } from "framer-motion"
 
 function App() {
   const [count, setCount] = useState(0)
+  const { scrollYProgress } = useScroll();
+
+function Component() {
+
+  const { scrollY } = useScroll()
+
+useEffect(() => {
+  return scrollY.onChange((latest) => {
+    console.log("Page scroll: ", latest)
+  })
+}, [])
+
+  
+    
+}
 
   return (
     <HashRouter>
+      <div>
+      <motion.div className='progress-bar' style={{ scaleX: scrollYProgress }} />  
+      </div>
       <div className='hero'>
       <nav>
         <h2 className='logo'>Julian <span>Marin</span></h2>
